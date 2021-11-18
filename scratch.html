@@ -1,0 +1,18 @@
+<meta charset="UTF-8">
+<button onclick="send()">发送消息</button>
+<script>
+    var ws = new WebSocket("ws://127.0.0.1:8080/v1/ws")
+    ws.onopen = function () {
+        console.log("握手成功")
+    }
+    ws.onmessage = function ({data}) {
+        console.log(data)
+    }
+    ws.onclose=function (){
+        console.log("服务器关闭链接")
+    }
+
+    function send() {
+        ws.send("我爱你");
+    }
+</script>
